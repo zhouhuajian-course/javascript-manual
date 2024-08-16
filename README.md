@@ -18,4 +18,4 @@
 9. {}叫做空对象，mozilla文档也是这样叫
 10. Math.floor(Math.random() * 数组.length) 随机获取数组索引，Math.random() 0 <= x < 1， Math.floor向下取整
 11. [1,2,3]，JS中叫数组，Arrays，不像Python一般叫列表，https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays
-12. JS语句末尾的分号可加可不加，不必要太拘束，没必要可以加，必须加的时候才加，不是必须的时候，随意写就好
+12. JS语句末尾的分号可加可不加，没必要太拘束，没必要刻意加，必须加的时候才加，不是必须的时候，随意写就好
