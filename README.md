@@ -28,3 +28,4 @@
     let [score1, score2, score3] = scores
     console.log(name, age, score1, score2, score3)  // 输出 "小明" 18 99 100 93
     ```
+14. 加法赋值运算符（+=）将右操作数的值添加到变量，并将结果分配给该变量。原来 += 可以叫 加法赋值，https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Addition_assignment    
