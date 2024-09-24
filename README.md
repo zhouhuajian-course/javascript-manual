@@ -58,9 +58,9 @@
     padding: 10px;
     border: 1px solid black;
   }
- img {
-      background-color: grey;
-    }
+  img {
+    background-color: grey;
+  }
 </style>
 <script>
   function allowDrop(ev) {
