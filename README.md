@@ -80,3 +80,21 @@
 </body>
 </html>
 ```
+18. 和 `<input type="file" multiple>` 类似，`<select multiple>` 不能简单用 `.value`，要遍历 `.options`，检查 `checked`，然后再获取每个 option 的 `value`，当然选择的时候，也不能简单用 value，而是要选中的选项，使用 `option.selected = true`
+```html
+<select id="select" multiple>
+  <option value="1">1111</option>
+  <option value="2">2222</option>
+  <option value="3">3333</option>
+</select >
+<script>
+  const options = document.querySelector('#select').options
+  const selectedValues = []
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].selected) {
+      selectedValues.push(options[i].value)
+    }
+  }
+  // selectedValues.join(',')
+</script>
+```
