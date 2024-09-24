@@ -29,7 +29,7 @@
     console.log(name, age, score1, score2, score3)  // 输出 "小明" 18 99 100 93
     ```
 14. 加法赋值运算符（+=）将右操作数的值添加到变量，并将结果分配给该变量。原来 += 可以叫 加法赋值，https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Addition_assignment    
-15. 当一个 <input>、<select> 或 <textarea> 元素的 value 被修改时，会触发 input 事件。对于 type=checkbox 或 type=radio 的 input 元素，每当用户切换控件（通过触摸、鼠标或键盘）时（HTML5 规范），input 事件都应该触发。然而，历史事实并非如此。请检查兼容性，或使用 change 事件代替这些类型的元素。`https://developer.mozilla.org/zh-CN/docs/Web/API/Element/input_event`
+15. 当一个 `<input>`、`<select>` 或 `<textarea>` 元素的 value 被修改时，会触发 input 事件。对于 type=checkbox 或 type=radio 的 input 元素，每当用户切换控件（通过触摸、鼠标或键盘）时（HTML5 规范），input 事件都应该触发。然而，历史事实并非如此。请检查兼容性，或使用 change 事件代替这些类型的元素。`https://developer.mozilla.org/zh-CN/docs/Web/API/Element/input_event`
 16. `<input type="file">`  `<input type="file" multiple>` 的数据，在 .files 属性里，而不是 .value 属性里，`.files` 是 `FileList`，每个文件是 `File`，出于安全原因，无法获取到文件的绝对路径，只有个文件名，或 `.value` 假路径，尽量不要使用 .value，这个属性对于这种情况，意义不大，使用 .files。暂时无法使用JS提供绝对路径的方式来选择文件，可能 Chrome DevTools Protocol 可以，未验证。
 17. 实现拖放(拖拽、放置)的简单例子。HTML 拖放（Drag and Drop）接口使应用程序能够在浏览器中使用拖放功能。例如，用户可使用鼠标选择可拖拽（draggable）元素，将元素拖拽到可放置（droppable）元素，并释放鼠标按钮以放置这些元素。拖拽操作期间，会有一个可拖拽元素的半透明快照跟随着鼠标指针。 `https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API`
 ```html
