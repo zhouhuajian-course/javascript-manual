@@ -29,3 +29,4 @@
     console.log(name, age, score1, score2, score3)  // 输出 "小明" 18 99 100 93
     ```
 14. 加法赋值运算符（+=）将右操作数的值添加到变量，并将结果分配给该变量。原来 += 可以叫 加法赋值，https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Addition_assignment    
+15. 当一个 <input>、<select> 或 <textarea> 元素的 value 被修改时，会触发 input 事件。对于 type=checkbox 或 type=radio 的 input 元素，每当用户切换控件（通过触摸、鼠标或键盘）时（HTML5 规范），input 事件都应该触发。然而，历史事实并非如此。请检查兼容性，或使用 change 事件代替这些类型的元素。`https://developer.mozilla.org/zh-CN/docs/Web/API/Element/input_event`
