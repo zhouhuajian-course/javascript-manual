@@ -44,7 +44,7 @@
 <p>在两个 div 元素之间来回拖动图像。</p>
 
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <img src="https://www.w3ccoo.com/html/img_w3slogo.gif" draggable="true" ondragstart="drag(event)" id="img1" width="88" height="31">
+  <img src="" draggable="true" ondragstart="drag(event)" id="img1" width="88" height="31">
 </div>
 
 <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -58,6 +58,9 @@
     padding: 10px;
     border: 1px solid black;
   }
+ img {
+      background-color: grey;
+    }
 </style>
 <script>
   function allowDrop(ev) {
