@@ -98,3 +98,4 @@
   // selectedValues.join(',')
 </script>
 ```
+19. 有些表单控件 `form control` 元素的 `.labels` 可以获取 这个元素的所有 `label` 元素，`label` 元素的 `.control`，可以获取这个 标签 所关联的 表单控件
