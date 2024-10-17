@@ -99,3 +99,120 @@
 </script>
 ```
 19. 有些表单控件 `form control` 元素的 `.labels` 可以获取 这个元素的所有 `label` 元素，`label` 元素的 `.control`，可以获取这个 标签 所关联的 表单控件
+20. 方便理解 Promise async await 的例子
+```javascript
+// 买菜 
+function getFood() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      food = "马铃薯"
+      console.log(food)
+      resolve("马铃薯")
+    }, 3 * 1000);
+  })
+}
+// 做饭
+function getDinner(food) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      dinner = food + "晚餐"
+      console.log(dinner)
+      resolve(dinner)
+    }, 3 * 1000);
+  })
+}
+// 吃饭
+function eatDinner(dinner) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(dinner + "吃完了")
+      resolve()
+    }, 3 * 1000);
+  })
+}
+// getFood()
+//   .then((food) => {
+//     return getDinner(food)
+//   })
+//   .then((dinner) => {
+//     return eatDinner(dinner)
+//   })
+//   .then()
+async function getFoodGetDinnerAndEatDinner() {
+  const food = await getFood()
+  const dinner = await getDinner(food)
+  await eatDinner(dinner)
+}
+
+getFoodGetDinnerAndEatDinner()
+```
+21. `Promise` 的出现是为了解决 `Callback Hell` 问题，`async/await` 的出现是为了解决 `Promise` 处理链可能会太长并且不够直观的问题。 `https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises` `http://callbackhell.com/`
+```javascript
+// Callback Hell
+doSomething(function (result) {
+  doSomethingElse(result, function (newResult) {
+    doThirdThing(newResult, function (finalResult) {
+      console.log(`得到最终结果：${finalResult}`);
+    }, failureCallback);
+  }, failureCallback);
+}, failureCallback);
+// Promise 处理链
+doSomething()
+  .then((url) => fetch(url))
+  .then((res) => res.json())
+  .then((data) => {
+    listOfIngredients.push(data);
+  })
+  .then(() => {
+    console.log(listOfIngredients);
+  });
+// 更直观、更类似同步代码的代码
+async function logIngredients() {
+  const url = await doSomething();
+  const res = await fetch(url);
+  const data = await res.json();
+  listOfIngredients.push(data);
+  console.log(listOfIngredients);
+}
+```
+22. `Promise` `async/await` 比较重要的知识点
+```text
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+
+A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+一个 Promise 对象表示一个异步操作的最终完成或者失败。（翻译的不够好）
+
+const promise = doSomething();
+const promise2 = promise.then(successCallback, failureCallback);
+This second promise (promise2) represents the completion not just of doSomething(), but also of the successCallback or failureCallback you passed in — which can be other asynchronous functions returning a promise.
+promise.then()调用结束返回promise2，表示 doSomething()调用完了，而且successCallback()或failureCallback()也调用完了。
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+
+An async function declaration creates an AsyncFunction object.
+一个 异步函数 声明 会创建一个 AsyncFunction 对象
+
+Note: The await keyword is only valid inside async functions within regular JavaScript code. If you use it outside of an async function's body, you will get a SyntaxError.
+await can be used on its own with JavaScript modules.
+await 关键字 只能再 async functions 里面有效。如果再 async function body 外面用，会有 SyntaxError
+
+In addition, the arguments to then are optional, and catch(failureCallback) is short for then(null, failureCallback)
+then()的参数是可选的，catch(failureCallback) 是 then(null, failureCallback) 的简写
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+A Promise is in one of these states:
+- pending: initial state, neither fulfilled nor rejected.
+- fulfilled: meaning that the operation was completed successfully.
+- rejected: meaning that the operation failed.
+一个 Promise 对象一定是三种状态之一，待确定、已兑现、已拒绝
+
+A promise is said to be settled if it is either fulfilled or rejected, but not pending.
+一个 Promise 对象如果是已兑现或已拒绝，而不是待确定，那么也叫 settled 已敲定
+
+
+
+
+todo: 理解so if your error handling code is the same for all steps, you can attach it to the end of the chain
+读：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+```
