@@ -216,3 +216,14 @@ A promise is said to be settled if it is either fulfilled or rejected, but not p
 todo: 理解so if your error handling code is the same for all steps, you can attach it to the end of the chain
 读：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 ```
+23. 逗号运算符 `,` `Comma operator` `逗号（,）运算符对它的每个操作数从左到右求值，并返回最后一个操作数的值。这让你可以创建一个复合表达式，其中多个表达式被评估，复合表达式的最终值是其成员表达式中最右边的值。` `The comma (,) operator evaluates each of its operands (from left to right) and returns the value of the last operand. ` `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comma_operator` 例如 `module.exports = (0, _inProcessFactory.createInProcessPlaywright)();`
+```javascript
+const a = (1, 2, 3, 4)
+const b = (1, function() { return 2; })()
+
+console.log(a);
+console.log(b);
+// > node .\test.js
+// 4
+// 2
+```
