@@ -227,3 +227,9 @@ console.log(b);
 // 4
 // 2
 ```
+24. setImmediate()  /ɪˈmiː.di.ət/ `该方法用来把一些需要长时间运行的操作放在一个回调函数里，在浏览器完成后面的其他语句后，就立刻执行这个回调函数。` `This method is used to break up long running operations and run a callback function immediately after the browser has completed other operations such as events and display updates.` `https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setImmediate` 
+```text
+已弃用: 不再推荐使用该特性。虽然一些浏览器仍然支持它，但也许已从相关的 web 标准中移除，也许正准备移除或出于兼容性而保留。请尽量不要使用该特性，并更新现有的代码；参见本页面底部的兼容性表格以指导你作出决定。请注意，该特性随时可能无法正常工作。
+
+非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！
+```
