@@ -233,3 +233,73 @@ console.log(b);
 
 非标准: 该特性是非标准的，请尽量不要在生产环境中使用它！
 ```
+25. 异常处理 
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw
+- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E8%AF%AD%E5%8F%A5
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+```javascript
+// throw 语句用于抛出用户自定义的异常。当前函数的执行将停止（throw 之后的语句不会被执行），并且控制权将传递给调用堆栈中第一个 catch 块。如果调用函数中没有 catch 块，则程序将终止。
+// 对于 Node.js 没有捕获异常，则程序终止，不会执行 throw 之后的语句
+console.log(111);
+throw new Error("出错了！");
+console.log(222);
+/*
+C:\Users\zhouhuajian\Desktop\software\nodejs\node.exe .\demo.js
+111
+Process exited with code 1
+Uncaught Error Error: 出错了！
+    at <anonymous> (c:\Users\zhouhuajian\Desktop\temp\demo.js:2:7)
+    at Module._compile (<node_internals>/internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (<node_internals>/internal/modules/cjs/loader:1548:10)
+    at Module.load (<node_internals>/internal/modules/cjs/loader:1288:32)
+    at Module._load (<node_internals>/internal/modules/cjs/loader:1104:12)
+    at executeUserEntryPoint (<node_internals>/internal/modules/run_main:174:12)
+    at <anonymous> (<node_internals>/internal/main/run_main_module:28:49)
+No debugger available, can not send 'variables'
+*/
+```
+```html
+<!-- 对于浏览器的JS执行环境来说，throw 后面的语句不会执行，但是事件循环还是会进入并正常运行，注意这种不一样的情况 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试</title>
+</head>
+<body>
+  <button id="btn">测试</button>
+  <script>
+    console.log(111);
+    document.querySelector("#btn").addEventListener('click', function () {
+      console.log("点击啦");
+    })
+    throw new Error("出错啦");
+    console.log(222);
+  </script>
+</body>
+</html>
+<!-- 
+控制台能输出 111 并且输出了5个 点击啦 点了5次 说明事件循环还是正常进入了
+
+111
+demo:17 Uncaught Error: 出错啦
+    at demo:17:11
+（匿名） @ demo:17
+5 demo:15 点击啦
+-->
+```
+```javascript
+// throw expression;
+// 通常下抛出 Error 或 其子类对象 比较规范，因为 捕获异常的开发人员，可能会用 message 之类的属性，message 是 Error 第一个参数的值
+// 但实际上，throw 可以抛出任意对象，捕获到的对象，也是对应的对象，不一定非得是 Error 对象
+
+throw "Error2"; // String type
+throw 42; // Number type
+throw true; // Boolean type
+throw {
+  toString: function () {
+    return "I'm an object!";
+  },
+};
+```
