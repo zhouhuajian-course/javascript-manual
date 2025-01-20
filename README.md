@@ -331,4 +331,27 @@ for (const val of foo()) {
 }
 console.log(str);
 ```
+29. 私有属性 Private properties `https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/Private_properties`
+```javascript
+class ClassWithPrivate {
+  #privateField;
+  #privateFieldWithInitializer = 42;
 
+  #privateMethod() {
+    // …
+  }
+
+  static #privateStaticField;
+  static #privateStaticFieldWithInitializer = 42;
+
+  static #privateStaticMethod() {
+    // …
+  }
+
+  test() {
+    console.log(this.#privateFieldWithInitializer);
+  }
+}
+
+new ClassWithPrivate().test();
+```
