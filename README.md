@@ -303,3 +303,32 @@ throw {
   },
 };
 ```
+26. `yield` 操作符 被用来 暂停和继续一个生成器函数 The yield operator is used to pause and resume a generator function.     `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield`
+```javascript
+function* foo(index) {
+  while (index < 2) {
+    yield index;
+    index++;
+  }
+}
+const iterator = foo(0);
+console.log(iterator.next().value);
+// Expected output: 0
+console.log(iterator.next().value);
+// Expected output: 1
+```
+27. `function*` function* 声明创建一个绑定到给定名称的新生成器函数。生成器函数可以退出，并在稍后重新进入，其上下文（变量绑定）会在重新进入时保存。你也可以使用 function* 表达式来定义生成器函数。 `https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function*`
+28. `function* `关键字可以在表达式内部定义一个生成器函数。
+```javascript
+const foo = function* () {
+  yield 'a';
+  yield 'b';
+  yield 'c';
+};
+let str = '';
+for (const val of foo()) {
+  str = str + val;
+}
+console.log(str);
+```
+
